@@ -24,7 +24,7 @@ if "messages" not in st.session_state:
 
 # Header
 st.title("CareBot")
-st.write("Ketik pertanyaanmu di bawah ini, dan CareBot akan menjawab.")
+st.write("Konsultasikan keluhanmu ke CareBot")
 
 # Input pengguna
 user_input = st.text_input("Anda:", placeholder="Tanyakan sesuatu...", key="input")
