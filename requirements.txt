@@ -1,8 +1,6 @@
 accelerate==1.0.1
 bleach==4.1.0
 evaluate==0.4.0
-huggingface_accelerate==1.0.1
-huggingface_hub==0.24.6
 nltk==3.9.1
 streamlit==1.40.1
 streamlit-chat==0.0.2.2
