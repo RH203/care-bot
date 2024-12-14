@@ -29,18 +29,22 @@ st.write("Konsultasikan keluhanmu ke CareBot")
 # Input pengguna
 user_input = st.text_input("Anda:", placeholder="Tanyakan sesuatu...", key="input")
 
-# Proses jika ada input
-if user_input:
-    # Tambahkan input pengguna ke percakapan
-    st.session_state["messages"].append({"role": "user", "content": user_input})
+# Tambahkan tombol untuk mengirim input
+if st.button("Kirim"):
+    if user_input:
+        # Tambahkan input pengguna ke percakapan
+        st.session_state["messages"].append({"role": "user", "content": user_input})
 
-    # Proses model untuk memberikan respons
-    inputs = tokenizer.encode(user_input, return_tensors="pt")
-    outputs = model.generate(inputs, max_length=512, num_return_sequences=1)
-    bot_response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        # Proses model untuk memberikan respons
+        inputs = tokenizer.encode(user_input, return_tensors="pt")
+        outputs = model.generate(inputs, max_length=512, num_return_sequences=1)
+        bot_response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    # Tambahkan respons bot ke percakapan
-    st.session_state["messages"].append({"role": "bot", "content": bot_response})
+        # Tambahkan respons bot ke percakapan
+        st.session_state["messages"].append({"role": "bot", "content": bot_response})
+
+    else:
+        st.warning("Mohon masukkan sesuatu sebelum mengirim!")
 
 # Tampilkan percakapan
 for message_data in st.session_state["messages"]:
